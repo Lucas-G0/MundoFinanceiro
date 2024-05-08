@@ -2057,6 +2057,7 @@ input, select, textarea {
 		display: inline-block;
 		background: #df7366;
 		color: #fff;
+		margin: 0 15px 0 15px;
 		text-align: center;
 		border-radius: 0.5em;
 		text-decoration: none;
@@ -2164,8 +2165,8 @@ input, select, textarea {
 
 	.wrapper {
 		background: #fff;
-		margin: 0 0 2em 0;
-		padding: 6em 0 6em 0;
+		margin: 0;
+		padding: 0;
 	}
 
 		.wrapper.style2 {
