@@ -2066,14 +2066,14 @@ input, select, textarea {
 
 	#header {
 		position: relative;
-		background: #ffffff;
+		background: rgba(34, 30, 31, 0.98);
 		border-bottom: solid 1px #ccc;
-		padding: 5em 0 4em 0;
+		padding: 2em 0 1em 0;
 		text-align: center;
 	}
 
 		#header h1 {
-			color: #252122;
+			color: #fefefe;
 			font-weight: 900;
 			font-size: 2.5em;
 			letter-spacing: -0.035em;
@@ -2291,7 +2291,7 @@ input, select, textarea {
 	#footer {
 		position: relative;
 		color: #858484;
-		padding: 4em 0;
+		padding: 1em 0;
 	}
 
 		#footer:before {
