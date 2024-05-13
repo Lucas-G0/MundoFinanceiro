@@ -2483,19 +2483,19 @@ input, select, textarea {
 			text-align: center;
 		}
 
-			#footer .contact p {
+			.contact p {
 				text-align: center;
 				margin: 0 0 3em 0;
 			}
 
-		#footer .copyright {
+		.copyright {
 			text-align: center;
 			color: rgba(128, 128, 128, 0.75);
 			font-size: 0.8em;
 			cursor: default;
 		}
 
-			#footer .copyright a {
+			.copyright a {
 				color: rgba(128, 128, 128, 0.75);
 			}
 
@@ -2815,7 +2815,7 @@ input, select, textarea {
 
 		/* Menu */
 
-			ul.menu {
+			ul .menu {
 				height: auto;
 				text-align: center;
 			}
