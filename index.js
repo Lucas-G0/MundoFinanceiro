@@ -109,64 +109,93 @@ function finishGame() {
 
 const questions = [
   {
-    question: "Dentro de qual elemento HTML colocamos o JavaScript?",
+    question: "O que significa economizar dinheiro?",
     answers: [
-      { text: "<javascript>", correct: false },
-      { text: "<js>", correct: false },
-      { text: "<script>", correct: true },
-      { text: "<scripting>", correct: false }
+      { text: "Gastar todo o dinheiro", correct: false },
+      { text: "Guardar dinheiro para o futuro", correct: true },
+      { text: "Perder o dinheiro", correct: false },
+      { text: "Contar o dinheiro", correct: false }
     ]
   },
   {
-    question: "Onde é o lugar correto para inserir JavaScript?",
+    question: "oão quer comprar um brinquedo que custa R$ 50,00. Ele tem R$ 30,00 guardados e ganha R$ 10,00 por semana de mesada. Quantas semanas João precisa esperar para ter dinheiro suficiente para comprar o brinquedo?",
     answers: [
-      { text: "Tanto no <head> quanto no <body> está correto", correct: true },
-      { text: "No <body>", correct: false },
-      { text: "No <head>", correct: false },
-      { text: "Em outro lugar", correct: false }
+      { text: "1 semana", correct: false },
+      { text: "2 semanas", correct: true },
+      { text: "3 semanas", correct: false },
+      { text: "4 semanas", correct: false }
     ]
   },
   {
-    question: 'Qual é a sintaxe correta para se referir a um script externo chamado "xxx.js"',
+    question: 'Por que é bom comparar preços antes de comprar algo?',
     answers: [
-      { text: '<script src="xxx.js">', correct: true },
-      { text: '<script href="xxx.js">', correct: false },
-      { text: '<script name="xxx.js">', correct: false },
-      { text: "Nenhuma das alternativas", correct: false }
+      { text: 'Para gastar mais dinheiro', correct: false },
+      { text: 'Para encontrar o melhor preço', correct: true },
+      { text: 'Para ganhar prêmios', correct: false },
+      { text: "Para se divertir", correct: false }
     ]
   },
   {
-    question: 'O arquivo JavaScript externo deve conter a tag <script>',
+    question: 'Maria tem R$ 100,00. Ela quer comprar uma mochila que custa R$ 70,00 e um caderno que custa R$ 20,00. Se ela comprar a mochila e o caderno, quanto dinheiro vai sobrar para Maria?',
     answers: [
-      { text: "Verdadeiro", correct: false },
-      { text: "Falso", correct: true }
+      { text: "R$ 10,00", correct: true },
+      { text: "R$ 20,00", correct: false },
+      { text: "R$ 30,00", correct: false },
+      { text: "R$ 40,00", correct: false }
     ]
   },
   {
-    question: 'Como escrever "Hello World" numa caixa de alerta?',
+    question: 'O que é um salário?',
     answers: [
-      { text: 'msg("Hello World");', correct: false },
-      { text: 'alert("Hello World");', correct: true },
-      { text: 'msgBox("Hello World");', correct: false },
-      { text: 'alertBox("Hello World");', correct: false }
+      { text: 'Dinheiro que ganhamos por trabalhar', correct: true },
+      { text: 'Um presente de aniversário', correct: false },
+      { text: 'Um jogo de tabuleiro', correct: false },
+      { text: 'Um tipo de comida', correct: false }
     ]
   },
   {
-    question: 'Como podemos criar uma função no JavaScript?',
+    question: 'O que significa fazer um orçamento?',
     answers: [
-      { text: 'function:myFunction()', correct: false },
-      { text: 'function myFunction()', correct: true },
-      { text: 'function = myFunction()', correct: false },
-      { text: 'Nenhum desses códigos criaria uma função', correct: false }
+      { text: 'Planejar como gastar o dinheiro', correct: true },
+      { text: 'Gastar dinheiro sem pensar', correct: false },
+      { text: 'Esconder o dinheiro', correct: false },
+      { text: 'Dar dinheiro para os amigos', correct: false }
     ]
   },
   {
-    question: 'Como podemos chamar uma função chamada "minhaFuncao"?',
+    question: 'Por que é importante guardar dinheiro no banco?',
     answers: [
-      { text: 'call minhaFuncao()', correct: false },
-      { text: 'call function minhaFuncao()', correct: false },
-      { text: 'Nenhum desses códigos chamaria essa função', correct: false },
-      { text: 'minhaFuncao()', correct: true },
+      { text: 'Para gastar mais rápido', correct: false },
+      { text: 'Para manter o dinheiro seguro', correct: true },
+      { text: 'Para perder o dinheiro', correct: false },
+      { text: 'Para fazer amigos', correct: false },
+    ]
+  },
+  {
+    question: 'O que é uma "conta poupança" e para que serve?',
+    answers: [
+      { text: 'Uma conta poupança é usada para gastar dinheiro em compras impulsivas.', correct: false },
+      { text: 'Uma conta poupança é usada para guardar dinheiro e ganhar juros sobre ele', correct: true },
+      { text: 'Uma conta poupança é usada para investir em ações.', correct: false },
+      { text: 'Uma conta poupança é usada para doar dinheiro para instituições de caridade', correct: false },
+    ]
+  },
+  {
+    question: 'O que é o sistema PIX e como ele funciona?',
+    answers: [
+      { text: 'O PIX é uma rede social para compartilhamento de fotos.', correct: false },
+      { text: 'O PIX é um sistema de pagamento que permite transferências instantâneas de dinheiro entre contas bancárias, disponível 24 horas por dia, todos os dias da semana.', correct: true },
+      { text: 'O PIX é uma forma de comprar pizzas online.', correct: false },
+      { text: 'O PIX é um tipo de jogo de computador.', correct: false },
+    ]
+  },
+  {
+    question: 'O que é um cartão de crédito e como ele funciona?',
+    answers: [
+      { text: 'Um cartão de crédito é usado apenas para sacar dinheiro em caixas eletrônicos.', correct: false },
+      { text: 'Um cartão de crédito é uma forma de desconto em lojas específicas.', correct: false },
+      { text: 'Um cartão de crédito é uma forma de empréstimo oferecida por um banco ou instituição financeira, que permite que você faça compras agora e pague por elas mais tarde', correct: true },
+      { text: 'Um cartão de crédito é usado apenas para fazer pagamentos em dinheiro.', correct: false },
     ]
   },
 ]
