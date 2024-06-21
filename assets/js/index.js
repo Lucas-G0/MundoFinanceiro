@@ -1,94 +1,108 @@
-const $startGameButton = document.querySelector(".start-quiz")
-const $nextQuestionButton = document.querySelector(".next-question")
-const $questionsContainer = document.querySelector(".questions-container")
-const $questionText = document.querySelector(".question")
-const $answersContainer = document.querySelector(".answers-container")
-const $answers = document.querySelectorAll(".answer")
+const $startGameButton = document.querySelector(".start-quiz");
+const $nextQuestionButton = document.querySelector(".next-question");
+const $questionsContainer = document.querySelector(".questions-container");
+const $questionText = document.querySelector(".question");
+const $answersContainer = document.querySelector(".answers-container");
+const $characterImage = document.querySelector("#character-image");
 
-let currentQuestionIndex = 0
-let totalCorrect = 0
+let currentQuestionIndex = 0;
+let totalCorrect = 0;
 
-$startGameButton.addEventListener("click", startGame)
-$nextQuestionButton.addEventListener("click", displayNextQuestion)
+const characterImages = [
+  'assets/images/monstro1.png',
+  'assets/images/monstro2.png',
+  'assets/images/monstro3.png',
+  'assets/images/monstro4.png',
+  'assets/images/monstro5.png',
+  'assets/images/monstro6.png',
+  'assets/images/monstro7.png',
+  'assets/images/monstro8.png'
+];
+
+$startGameButton.addEventListener("click", startGame);
+$nextQuestionButton.addEventListener("click", displayNextQuestion);
 
 function startGame() {
-  $startGameButton.classList.add("hide")
-  $questionsContainer.classList.remove("hide")
-  displayNextQuestion()
+  $startGameButton.classList.add("hide");
+  $questionsContainer.classList.remove("hide");
+  displayNextQuestion();
 }
 
 function displayNextQuestion() {
-  resetState()
+  resetState();
   
   if (questions.length === currentQuestionIndex) {
-    return finishGame()
+    return finishGame();
   }
 
-  $questionText.textContent = questions[currentQuestionIndex].question
+  const currentImage = characterImages[currentQuestionIndex % characterImages.length];
+  $characterImage.src = currentImage;
+  console.log("Imagem atual:", currentImage);  // Adicionado para depuração
+  $questionText.textContent = questions[currentQuestionIndex].question;
   questions[currentQuestionIndex].answers.forEach(answer => {
-    const newAsnwer = document.createElement("button")
-    newAsnwer.classList.add("button", "answer")
-    newAsnwer.textContent = answer.text
+    const newAnswer = document.createElement("button");
+    newAnswer.classList.add("button", "answer");
+    newAnswer.textContent = answer.text;
     if (answer.correct) {
-      newAsnwer.dataset.correct = answer.correct
+      newAnswer.dataset.correct = answer.correct;
     }
-    $answersContainer.appendChild(newAsnwer)
+    $answersContainer.appendChild(newAnswer);
 
-    newAsnwer.addEventListener("click", selectAnswer)
-  })
+    newAnswer.addEventListener("click", selectAnswer);
+  });
 }
 
 function resetState() {
   while($answersContainer.firstChild) {
-    $answersContainer.removeChild($answersContainer.firstChild)
+    $answersContainer.removeChild($answersContainer.firstChild);
   }
 
-  document.body.removeAttribute("class")
-  $nextQuestionButton.classList.add("hide")
+  document.body.removeAttribute("class");
+  $nextQuestionButton.classList.add("hide");
 }
 
 function selectAnswer(event) {
-  const answerClicked = event.target
+  const answerClicked = event.target;
 
   if (answerClicked.dataset.correct) {
-    document.body.classList.add("correct")
-    totalCorrect++
+    document.body.classList.add("correct");
+    totalCorrect++;
   } else {
-    document.body.classList.add("incorrect") 
+    document.body.classList.add("incorrect");
   }
 
   document.querySelectorAll(".answer").forEach(button => {
-    button.disabled = true
+    button.disabled = true;
 
     if (button.dataset.correct) {
-      button.classList.add("correct")
+      button.classList.add("correct");
     } else {
-      button.classList.add("incorrect")
+      button.classList.add("incorrect");
     }
-  })
+  });
   
-  $nextQuestionButton.classList.remove("hide")
-  currentQuestionIndex++
+  $nextQuestionButton.classList.remove("hide");
+  currentQuestionIndex++;
 }
 
 function finishGame() {
-  const totalQuestions = questions.length
-  const performance = Math.floor(totalCorrect * 100 / totalQuestions)
+  const totalQuestions = questions.length;
+  const performance = Math.floor(totalCorrect * 100 / totalQuestions);
   
-  let message = ""
+  let message = "";
 
   switch (true) {
     case (performance >= 90):
-      message = "Excelente :)"
-      break
+      message = "Excelente :)";
+      break;
     case (performance >= 70):
-      message = "Muito bom :)"
-      break
+      message = "Muito bom :)";
+      break;
     case (performance >= 50):
-      message = "Bom"
-      break
+      message = "Bom";
+      break;
     default:
-      message = "Pode melhorar :("
+      message = "Pode melhorar :(";
   }
 
   $questionsContainer.innerHTML = 
@@ -103,9 +117,8 @@ function finishGame() {
     >
       Refazer teste
     </button>
-  `
+  `;
 }
-
 
 const questions = [
   {
@@ -118,7 +131,7 @@ const questions = [
     ]
   },
   {
-    question: "oão quer comprar um brinquedo que custa R$ 50,00. Ele tem R$ 30,00 guardados e ganha R$ 10,00 por semana de mesada. Quantas semanas João precisa esperar para ter dinheiro suficiente para comprar o brinquedo?",
+    question: "João quer comprar um brinquedo que custa R$ 50,00. Ele tem R$ 30,00 guardados e ganha R$ 10,00 por semana de mesada. Quantas semanas João precisa esperar para ter dinheiro suficiente para comprar o brinquedo?",
     answers: [
       { text: "1 semana", correct: false },
       { text: "2 semanas", correct: true },
@@ -194,8 +207,15 @@ const questions = [
     answers: [
       { text: 'Um cartão de crédito é usado apenas para sacar dinheiro em caixas eletrônicos.', correct: false },
       { text: 'Um cartão de crédito é uma forma de desconto em lojas específicas.', correct: false },
-      { text: 'Um cartão de crédito é uma forma de empréstimo oferecida por um banco ou instituição financeira, que permite que você faça compras agora e pague por elas mais tarde', correct: true },
-      { text: 'Um cartão de crédito é usado apenas para fazer pagamentos em dinheiro.', correct: false },
+      { text: 'Um cartão de crédito permite que você faça compras agora e pague por elas depois, geralmente com a possibilidade de parcelar o pagamento.', correct: true },
+      { text: 'Um cartão de crédito é um cartão que só pode ser usado para compras online.', correct: false },
     ]
-  },
-]
+  }
+];
+
+characterImages.forEach(src => {
+  const img = new Image();
+  img.src = src;
+  img.onload = () => console.log(`Imagem carregada: ${src}`);
+  img.onerror = () => console.error(`Erro ao carregar a imagem: ${src}`);
+});
