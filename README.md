@@ -1,3 +1,6 @@
+Pitch: https://www.youtube.com/watch?v=p88twF1Xz7w
+
+
 RESPONSÁVEIS: 
 
 Luiz Gustavo RA: 23233363-2 \
