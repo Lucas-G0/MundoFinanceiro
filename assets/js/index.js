@@ -4,7 +4,14 @@ const $questionsContainer = document.querySelector(".questions-container");
 const $questionText = document.querySelector(".question");
 const $answersContainer = document.querySelector(".answers-container");
 const $characterImage = document.querySelector("#character-image");
+const $textContainer = document.querySelector("#hide_start");
 
+
+var som1 = document.getElementById("som1");
+var som2 = document.getElementById("som2");
+var som3 = document.getElementById("som3");
+document.getElementById("som4").volume=(0.2);
+let playerName = document.querySelector('#name');
 let currentQuestionIndex = 0;
 let totalCorrect = 0;
 
@@ -21,10 +28,19 @@ const characterImages = [
 
 $startGameButton.addEventListener("click", startGame);
 $nextQuestionButton.addEventListener("click", displayNextQuestion);
+$(".button").click(function(){
+  som1.pause();
+  som1.currentTime= 0;
+  som1.play();
+})
+
+
 
 function startGame() {
   $startGameButton.classList.add("hide");
   $questionsContainer.classList.remove("hide");
+  $textContainer.classList.add('hide');
+  document.getElementById("som4").volume=(0.1);
   displayNextQuestion();
 }
 
@@ -67,8 +83,25 @@ function selectAnswer(event) {
   if (answerClicked.dataset.correct) {
     document.body.classList.add("correct");
     totalCorrect++;
+    som3.pause();
+    som3.currentTime=0;
+    som3.play();
+    let params = {
+      particleCount: 500, 
+      spread: 90,
+      startVelocity: 70,
+      origin: { x: 0, y: 0.5 },
+      angle: 45
+    };
+    confetti(params);
+    params.origin.x = 1;
+    params.angle = 135;
+    confetti(params);
   } else {
     document.body.classList.add("incorrect");
+    som2.pause();
+    som2.currentTime=0;
+    som2.play();
   }
 
   document.querySelectorAll(".answer").forEach(button => {
@@ -87,7 +120,7 @@ function selectAnswer(event) {
 
 function finishGame() {
   const totalQuestions = questions.length;
-  const performance = Math.floor(totalCorrect * 100 / totalQuestions);
+  const performance = Math.floor(totalCorrect * 1000 / totalQuestions);
   
   let message = "";
 
@@ -108,8 +141,9 @@ function finishGame() {
   $questionsContainer.innerHTML = 
   `
     <p class="final-message">
+      Parabéns ${playerName.value}!
       Você acertou ${totalCorrect} de ${totalQuestions} questões!
-      <span>Resultado: ${message}</span>
+      <span>Pontuação: ${performance*10}</span>
     </p>
     <button 
       onclick=window.location.reload() 
@@ -120,12 +154,14 @@ function finishGame() {
   `;
 }
 
+
+
 const questions = [
   {
     question: "O que significa economizar dinheiro?",
     answers: [
-      { text: "Gastar todo o dinheiro", correct: false },
       { text: "Guardar dinheiro para o futuro", correct: true },
+      { text: "Gastar todo o dinheiro", correct: false },
       { text: "Perder o dinheiro", correct: false },
       { text: "Contar o dinheiro", correct: false }
     ]
@@ -143,8 +179,8 @@ const questions = [
     question: 'Por que é bom comparar preços antes de comprar algo?',
     answers: [
       { text: 'Para gastar mais dinheiro', correct: false },
-      { text: 'Para encontrar o melhor preço', correct: true },
       { text: 'Para ganhar prêmios', correct: false },
+      { text: 'Para encontrar o melhor preço', correct: true },
       { text: "Para se divertir", correct: false }
     ]
   },
@@ -158,57 +194,147 @@ const questions = [
     ]
   },
   {
-    question: 'O que é um salário?',
+    question: 'O que é uma mesada?',
     answers: [
-      { text: 'Dinheiro que ganhamos por trabalhar', correct: true },
       { text: 'Um presente de aniversário', correct: false },
       { text: 'Um jogo de tabuleiro', correct: false },
-      { text: 'Um tipo de comida', correct: false }
+      { text: 'Um tipo de comida', correct: false },
+      { text: 'Dinheiro que ganhamos por ajudar alguém', correct: true },
     ]
   },
   {
-    question: 'O que significa fazer um orçamento?',
+    question: 'João tem R$ 150,00. Ele quer comprar um par de tênis que custa R$ 120,00 e uma camiseta que custa R$ 25,00. Se ele comprar os dois, quanto dinheiro vai sobrar para João?',
     answers: [
-      { text: 'Planejar como gastar o dinheiro', correct: true },
-      { text: 'Gastar dinheiro sem pensar', correct: false },
-      { text: 'Esconder o dinheiro', correct: false },
-      { text: 'Dar dinheiro para os amigos', correct: false }
+      { text: "R$ 10,00", correct: false },
+      { text: "R$ 20,00", correct: false },
+      { text: "R$ 5,00", correct: true },
+      { text: "R$ 15,00", correct: false }
     ]
   },
   {
-    question: 'Por que é importante guardar dinheiro no banco?',
+    question: 'Por que é importante guardar dinheiro?',
     answers: [
-      { text: 'Para gastar mais rápido', correct: false },
       { text: 'Para manter o dinheiro seguro', correct: true },
+      { text: 'Para gastar mais rápido', correct: false },
       { text: 'Para perder o dinheiro', correct: false },
-      { text: 'Para fazer amigos', correct: false },
+      { text: 'Para fazer amigos', correct: false }
     ]
   },
   {
-    question: 'O que é uma "conta poupança" e para que serve?',
+    question: 'Isabel tem R$ 55,00. Ela quer comprar um livro que custa R$ 40,00 e um marcador de páginas que custa R$ 8,00. Se ela comprar ambos, quanto dinheiro vai sobrar para Isabel?',
     answers: [
-      { text: 'Uma conta poupança é usada para gastar dinheiro em compras impulsivas.', correct: false },
-      { text: 'Uma conta poupança é usada para guardar dinheiro e ganhar juros sobre ele', correct: true },
-      { text: 'Uma conta poupança é usada para investir em ações.', correct: false },
-      { text: 'Uma conta poupança é usada para doar dinheiro para instituições de caridade', correct: false },
+      { text: "R$ 5,00", correct: false },
+      { text: "R$ 6,00", correct: false },
+      { text: "R$ 7,00", correct: true },
+      { text: "R$ 8,00", correct: false }
     ]
   },
   {
-    question: 'O que é o sistema PIX e como ele funciona?',
+    question: 'João tem R$ 200,00. Ele quer comprar uma camiseta que custa R$ 40,00 cada. Quantas camisetas ele pode comprar com esse dinheiro?',
     answers: [
-      { text: 'O PIX é uma rede social para compartilhamento de fotos.', correct: false },
-      { text: 'O PIX é um sistema de pagamento que permite transferências instantâneas de dinheiro entre contas bancárias, disponível 24 horas por dia, todos os dias da semana.', correct: true },
-      { text: 'O PIX é uma forma de comprar pizzas online.', correct: false },
-      { text: 'O PIX é um tipo de jogo de computador.', correct: false },
+      { text: '3', correct: false },
+      { text: '5', correct: true },
+      { text: '6', correct: false },
+      { text: '4', correct: false },
     ]
   },
   {
-    question: 'O que é um cartão de crédito e como ele funciona?',
+    question: 'Fernanda tem R$ 200,00. Ela quer comprar cinco blusas que custam R$ 35,00 cada. Quanto dinheiro vai sobrar para Fernanda?',
     answers: [
-      { text: 'Um cartão de crédito é usado apenas para sacar dinheiro em caixas eletrônicos.', correct: false },
-      { text: 'Um cartão de crédito é uma forma de desconto em lojas específicas.', correct: false },
-      { text: 'Um cartão de crédito permite que você faça compras agora e pague por elas depois, geralmente com a possibilidade de parcelar o pagamento.', correct: true },
-      { text: 'Um cartão de crédito é um cartão que só pode ser usado para compras online.', correct: false },
+      { text: "R$ 15,00", correct: false },
+      { text: "R$ 25,00", correct: true },
+      { text: "R$ 30,00", correct: false },
+      { text: "R$ 35,00", correct: false }
+    ]
+  },
+  {
+    question: 'Bruno tem R$ 120,00. Ele quer comprar um boné que custa R$ 15,00 cada. Quantos bonés ele pode comprar com esse dinheiro?',
+    answers: [
+      { text: "6", correct: false },
+      { text: "7", correct: false },
+      { text: "8", correct: true },
+      { text: "9", correct: false }
+    ]
+  },
+  {
+    question: 'André tem R$ 60,00. Ele quer comprar uma caneta que custa R$ 10,00 cada. Quantas canetas ele pode comprar com esse dinheiro?',
+    answers: [
+      { text: "6", correct: true },
+      { text: "4", correct: false },
+      { text: "7", correct: false },
+      { text: "5", correct: false }
+    ]
+  },
+  {
+    question: 'Diego tem R$ 45,00. Ele quer comprar um jogo de tabuleiro que custa R$ 35,00 e um pacote de cartas que custa R$ 8,00. Se ele comprar ambos, quanto dinheiro vai sobrar para Diego?',
+    answers: [
+      { text: "R$ 0,00", correct: false },
+      { text: "R$ 2,00", correct: true },
+      { text: "R$ 5,00", correct: false },
+      { text: "R$ 45,00", correct: false }
+    ]
+  },
+  {
+    question: 'Ana tem R$ 300,00. Ela quer comprar um vestido que custa R$ 75,00 e dois pares de sapatos que custam R$ 85,00 cada. Quanto ela vai gastar no total?',
+    answers: [
+      { text: "R$ 15,00", correct: false },
+      { text: "R$ 25,00", correct: true },
+      { text: "R$ 30,00", correct: false },
+      { text: "R$ 35,00", correct: false }
+    ]
+  },
+  {
+    question: 'Diego tem R$ 180,00. Ele quer comprar um par de tênis que custa R$ 45,00 cada. Quantos pares de tênis ele pode comprar com esse dinheiro?',
+    answers: [
+      { text: "3", correct: false },
+      { text: "6", correct: false },
+      { text: "5", correct: false },
+      { text: "4", correct: true },
+    ]
+  },
+  {
+    question: 'André tem R$ 200,00. Ele quer comprar uma mochila que custa R$ 120,00 e um estojo que custa R$ 30,00. Ele também quer comprar um caderno que custa R$ 25,00. Quanto dinheiro vai sobrar para André?',
+    answers: [
+      { text: "R$ 30,00", correct: false },
+      { text: "R$ 15,00", correct: false },
+      { text: "R$ 25,00", correct: true },
+      { text: "R$ 35,00", correct: false },
+    ]
+  },
+  {
+    question: 'Luísa tem R$ 600,00. Ela quer comprar um vestido que custa R$ 350,00 e dois pares de sapatos que custam R$ 120,00 cada. Quanto dinheiro vai sobrar para Luísa?',
+    answers: [
+      { text: "R$ 10,00", correct: true },
+      { text: "R$ 15,00", correct: false },
+      { text: "R$ 5,00", correct: false },
+      { text: "R$ 20,00", correct: false },
+    ]
+  },
+  {
+    question: 'Sofia tem R$ 450,00. Ela quer comprar uma bolsa que custa R$ 75,00 cada. Quantas bolsas ela pode comprar com esse dinheiro?',
+    answers: [
+      { text: "4", correct: false },
+      { text: "5", correct: false },
+      { text: "6", correct: true },
+      { text: "7", correct: false }
+    ]
+  },
+  {
+    question: 'Roberto tem R$ 75,00. Ele quer comprar um CD que custa R$ 15,00 cada. Quantos CDs ele pode comprar com esse dinheiro?',
+    answers: [
+      { text: "6", correct: false },
+      { text: "5", correct: true },
+      { text: "3", correct: false },
+      { text: "4", correct: false },
+    ]
+  },
+  {
+    question: 'Felipe tem R$ 400,00. Ele quer comprar uma guitarra que custa R$ 300,00 e um afinador que custa R$ 40,00. Ele também quer comprar um conjunto de cordas que custa R$ 50,00. Quanto dinheiro vai sobrar para Felipe?',
+    answers: [
+      { text: "R$ 0,00", correct: false },
+      { text: "R$ 5,00", correct: false },
+      { text: "R$ 10,00", correct: true },
+      { text: "R$ 15,00", correct: false }
     ]
   }
 ];

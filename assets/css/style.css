@@ -43,6 +43,8 @@ body {
 
 .button:hover {
   background-color: #b3b3b3;
+  transform: scale(1.1);
+  transition: 0.5s;
 }
 
 .hide {
@@ -91,4 +93,10 @@ body {
   font-size: 20px;
   font-weight: bold;
   margin-top: 20px;
+}
+
+#name{
+  border-radius: 5px;
+  border: none;
+  text-align: center;
 }

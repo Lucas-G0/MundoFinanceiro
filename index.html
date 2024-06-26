@@ -1,31 +1,57 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css" />
 
-  <title>Quiz Mundo Financeiro</title>
-</head>
-<body>
-  <img src="assets/images/monstro1.png" alt="Personagem divertido" class="character" id="character-image">
-  <div class="container">
-    <div class="questions-container hide">
-      <span class="question">Pergunta aqui?</span>
-      <div class="answers-container">
-        <button class="answer button">Resposta 1</button>
-        <button class="answer button">Resposta 2</button>
-        <button class="answer button">Resposta 3</button>
-        <button class="answer button">Resposta 4</button>
+    <title>Quiz Mundo Financeiro</title>
+  </head>
+  <body>
+    <audio id="som1" src="https://www.soundjay.com/buttons/sounds/button-11.mp3" hidden></audio>
+    <audio id="som2" src="assets/sounds/651626__martcraft__critical_fail.wav" hidden></audio>
+    <audio id="som3" src="assets/sounds/428156__higgs01__yay.wav" hidden></audio>
+    <audio id="som4" src="assets/sounds/655390__sergequadrado__like-a-child.wav" autoplay loop></audio>
+    <img
+      src="assets/images/monstro1.png"
+      alt="Personagem divertido"
+      class="character"
+      id="character-image"
+    />
+    <div class="container">
+      <div class="questions-container hide">
+        <span class="question">Pergunta aqui?</span>
+        <div class="answers-container">
+          <button class="answer button" id="answer1">Resposta 1</button>
+          <button class="answer button">Resposta 2</button>
+          <button class="answer button">Resposta 3</button>
+          <button class="answer button">Resposta 4</button>
+        </div>
+      </div>
+      <div class="explicacao" id="hide_start">
+        <span>Insira seu nome para iniciar!</span>
+        <div class="mb-3">
+          <label for="name" class="form-label"></label>
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            id="name"
+            placeholder=""
+          />
+        </div>
+      </div>
+
+      <div class="controls-container">
+        <button class="start-quiz button">Começar Quiz!</button>
+        <button class="next-question button hide">Próxima pergunta</button>
       </div>
     </div>
-    <div class="controls-container">
-      <button class="start-quiz button">Começar Quiz!</button>
-      <button class="next-question button hide">Próxima pergunta</button>
-    </div>
-  </div>
-  <script src="assets/js/index.js" async></script>
-</body>
+    <script src="assets/js/index.js" async></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <script src="path/to/p5.sound.js"></script>
+  </body>
 </html>
