@@ -29,7 +29,7 @@ body {
 }
 
 
-.button {
+.button, .btn {
   background-color: #ffffff;
   color: rgb(0, 0, 0);
   border: none;
@@ -41,7 +41,7 @@ body {
   transition: background-color 0.3s;
 }
 
-.button:hover {
+.button:hover, .btn:hover {
   background-color: #b3b3b3;
   transform: scale(1.1);
   transition: 0.5s;
@@ -66,7 +66,7 @@ body {
   gap: 10px;
 }
 
-.answer {
+.answer{
   background-color: #ffffff;
   color: rgb(0, 0, 0);
   border: none;

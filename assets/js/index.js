@@ -5,6 +5,8 @@ const $questionText = document.querySelector(".question");
 const $answersContainer = document.querySelector(".answers-container");
 const $characterImage = document.querySelector("#character-image");
 const $textContainer = document.querySelector("#hide_start");
+const $closeModal = document.querySelector("#close-modal");
+const $openModal = document.querySelector("#open-modal");
 
 
 var som1 = document.getElementById("som1");
@@ -34,7 +36,16 @@ $(".button").click(function(){
   som1.play();
 })
 
+$closeModal.addEventListener("click", function(){
+  document.querySelector("#exampleModal").style.display='none';
+});
 
+$openModal.addEventListener("click", function(){
+  if(document.querySelector("#exampleModal").style.display=='flex'){
+    document.querySelector("#exampleModal").style.display='none';
+  } else
+    document.querySelector("#exampleModal").style.display='flex';
+});
 
 function startGame() {
   $startGameButton.classList.add("hide");
