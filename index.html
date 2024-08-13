@@ -24,16 +24,16 @@
   </button>
 
   <!-- Modal -->
-  <div class="modal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" style="font-size: larger;"><strong>Bem-vindos ao Quiz Divertido de
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal"
+    aria-hidden="true" style="position: absolute; display: flex; z-index: 1;">
+    <div class="modal-dialog container" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal" style="font-size: larger;"><strong>Bem-vindos ao Quiz Divertido de
             Educação Financeira!</strong></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Oi, amiguinhos! Vocês estão prontos para uma aventura super divertida e cheia de aprendizado? Então venham
+        </div>
+        <div class="modal-body">
+          Oi, amiguinhos! Vocês estão prontos para uma aventura super divertida e cheia de aprendizado? Então venham
           conhecer nosso site especial de quiz sobre educação financeira! <br><br>
           Aqui, vamos brincar e aprender ao mesmo tempo
           sobre como cuidar bem do nosso dinheirinho. Temos várias perguntas e respostas sobre dinheiro, economia e como
@@ -50,14 +50,15 @@
           Murilo Silva Barbosa RA: 23272159-2<br>
           Thiago Nunes de Souza RA: 23000383-2<br>
           Vitória de Oliveira RA: 23223206-2<br>
-          Gabriel Andrade Garcia RA: 23271855-2<br><br></p>
-      </div>
-      <div class="modal-footer" style="margin-top: 15px;">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          Gabriel Andrade Garcia RA: 23271855-2<br><br>
+
+        </div>
+        <div class="modal-footer" style="margin-top: 15px;">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" data-target="#modal" id="close-modal">Fechar</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
   <img src="assets/images/monstro1.png" alt="Personagem divertido" class="character" id="character-image" />
   <div class="container">
