@@ -37,13 +37,16 @@ $(".button").click(function(){
 })
 
 $closeModal.addEventListener("click", function(){
-  document.querySelector("#exampleModal").style.display='none';
+  if(document.querySelector("#exampleModal").style.display=='none'){
+    document.querySelector("#exampleModal").style.display='flex';
+  }
+    document.querySelector("#exampleModal").style.display='none';
 });
 
 $openModal.addEventListener("click", function(){
   if(document.querySelector("#exampleModal").style.display=='flex'){
     document.querySelector("#exampleModal").style.display='none';
-  } else
+  }
     document.querySelector("#exampleModal").style.display='flex';
 });
 
